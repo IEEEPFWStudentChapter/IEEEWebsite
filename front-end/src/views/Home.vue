@@ -1,13 +1,25 @@
 <template>
   <div>
     This is the home Page
+    <Officer v-for="person in officers" :key="person.Name" :person="person"></Officer>
+    <!-- <Officer imageLoc='/officers/Me!.jpg'></Officer> -->
     <router-link to='./login'>Login</router-link>
   </div>
 </template>
 
 <script>
+import Officer from '../components/Officer.vue'
+import messages from '../../public/officers/description.json';
 export default {
   name: 'Home',
+  data(){
+    return{
+      officers: messages
+    }
+  },
+  components: {
+    Officer
+  },
   props: {
     msg: String
   },
